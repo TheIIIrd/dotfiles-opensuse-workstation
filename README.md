@@ -25,9 +25,9 @@ Some of the out-of-the-box software I never needed. So, I just delete it.
 sudo zypper remove gnome-contacts gnome-weather gnome-maps cheese totem evolution gnome-chess quadrapassel polari swell-foop gnome-mahjongg gnome-sudoku gnome-mines lightsoff iagno gnome-extensions yelp
 ```
 
-### Basic software installation
+### Installing useful software
 
-This is the base.
+Basic packages that we will need as we work with the system.
 
 ```sh
 sudo zypper install git wget curl inxi neovim neofetch java-21-openjdk python311 python311-pip dkms gcc-c++

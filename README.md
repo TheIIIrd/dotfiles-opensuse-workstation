@@ -156,7 +156,7 @@ Engine for the STALKER series of games. Makes the game native.
 
 ```sh
 # download the necessary dependencies
-sudo dnf install git cmake make gcc gcc-c++ glew-devel openal-devel cryptopp-devel libogg-devel libtheora-devel libvorbis-devel SDL2-devel lzo-devel libjpeg-turbo-devel
+sudo zypper in git cmake make gcc gcc-c++ glew-devel openal-devel cryptopp-devel libogg-devel libtheora-devel libvorbis-devel SDL2-devel lzo-devel libjpeg-turbo-devel
 
 git clone https://github.com/OpenXRay/xray-16.git --recurse-submodules
 cd xray-16 && mkdir bin && cd bin

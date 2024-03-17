@@ -103,6 +103,8 @@ You can use tlp, or delete it and install power-profiles-daemon
 sudo systemctl enable tlp.service
 ```
 
+> Use power-profiles-daemon
+
 ```sh
 sudo systemctl disable tlp.service
 

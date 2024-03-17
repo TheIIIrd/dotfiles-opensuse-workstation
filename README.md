@@ -16,7 +16,7 @@ The community repository allows you to greatly expand the list of available soft
 Some of the out-of-the-box software I never needed. So, I just delete it.
 
 ```sh
-sudo zypper remove kontact kmahjongg kmines kreversi ksudoku akregator kaddressbook kmail kontact konversation ktnef knotes kpat libkdegames system-user-games libkdegames-lang mbox-importer-lang kdegames-carddecks-default kaddressbook-doc akonadi-contacts
+sudo zypper remove kmahjongg kmines kreversi ksudoku akregator kaddressbook konversation kmail kontact ktnef knotes kpat libkdegames mbox-importer-lang kdegames-carddecks-default kaddressbook-doc akonadi-contacts akonadi-calendar
 ```
 
 ### Installing useful software

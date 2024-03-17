@@ -130,7 +130,7 @@ Native launcher for modding games.
 > https://github.com/ebkr/r2modmanPlus/releases
 
 ```sh
-./<programname>.AppImage
+./<package_name>.AppImage
 ```
 
 > Create desktop shortcut

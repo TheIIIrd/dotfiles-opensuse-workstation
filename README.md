@@ -122,6 +122,12 @@ flatpak install flathub org.kde.kdenlive org.onlyoffice.desktopeditors com.orama
 sudo flatpak override com.vscodium.codium --env=GTK_THEME=adw-gtk3-dark
 ```
 
+If you have problems with vscodium on Wayland session, you may use this command
+
+```sh
+flatpak override --user --nosocket=wayland com.vscodium.codium
+```
+
 ### Installing mod launcher for games (especially important for Risk Of Rain 2)
 
 Native launcher for modding games.
@@ -167,7 +173,7 @@ cmake .. -DCMAKE_INSTALL_LIBDIR=lib64 -DCMAKE_INSTALL_PREFIX=/usr
 make -j<numberofcores>
 
 QA_RPATHS=$(( 0x0001|0x0010 )) make package
-sudo rpm -ivh <programname>
+sudo rpm -ivh <package_name>
 ```
 
 ### Installing the open source version of the Minecraft Launcher

@@ -11,6 +11,17 @@ The community repository allows you to greatly expand the list of available soft
 > Add the Nvidia and Pacman community repositories.
 > You can do this through YaST.
 
+### Zypper configuration
+
+
+```sh
+sudo vim /etc/zypp/zypp.conf
+
+# add it to the file
+# normally this parameter is on line 403
+solver.onlyRequires = true
+```
+
 ### Uninstalling software
 
 Some of the out-of-the-box software I never needed. So, I just delete it.
@@ -51,6 +62,30 @@ Reboot and check inxi
 
 ```sh
 inxi -G
+```
+
+Using multiple graphics cards
+
+```sh
+# check prime mode
+sudo prime-select get-current
+
+# select offload mode
+sudo prime-select boot offload
+
+# find nvidia gpu id
+xrandr --listproviders
+# or use
+lspci | grep -i nvidia
+
+__NV_PRIME_RENDER_OFFLOAD=<nvidia_id> __GLX_VENDOR_LIBRARY_NAME=nvidia <command>
+```
+
+Using a single graphics card
+
+```sh
+# you can change nvidia to intel
+sudo prime-select boot nvidia
 ```
 
 ### Adding a flathub repository

@@ -13,7 +13,6 @@ The community repository allows you to greatly expand the list of available soft
 
 ### Zypper configuration
 
-
 ```sh
 sudo vim /etc/zypp/zypp.conf
 

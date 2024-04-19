@@ -72,11 +72,7 @@ sudo prime-select get-current
 # select offload mode
 sudo prime-select boot offload
 
-# find nvidia gpu id
-xrandr --listproviders
-# or use
-lspci | grep -i nvidia
-
+# to run program with a gpu
 __NV_PRIME_RENDER_OFFLOAD=<nvidia_id> __GLX_VENDOR_LIBRARY_NAME=nvidia <command>
 ```
 
@@ -308,7 +304,7 @@ sudo mv MesloLGS\ NF\ Regular.ttf /usr/share/fonts/
 Oh-my-zsh will extend the capabilities of regular zsh.
 
 ```sh
-sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
 ```
 
 ### Plugins for zsh

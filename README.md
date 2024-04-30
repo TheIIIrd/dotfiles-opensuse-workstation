@@ -26,7 +26,7 @@ solver.onlyRequires = true
 Some of the out-of-the-box software I never needed. So, I just delete it.
 
 ```sh
-sudo zypper remove kmahjongg kmines kreversi ksudoku akregator kaddressbook konversation kmail kontact ktnef knotes kpat libkdegames mbox-importer kdegames-carddecks-default akonadi-calendar-tools akonadi-contacts akonadi-import-wizard akonadi-contacts akonadi-calendar
+sudo zypper rm kmahjongg kmines kreversi ksudoku akregator kaddressbook konversation kmail kontact ktnef knotes kpat mbox-importer libkdegames kdegames-carddecks-default akonadi-contacts akonadi-import-wizard akonadi-calendar akonadi-calendar-tools
 ```
 
 ### Installing useful software
@@ -71,16 +71,16 @@ sudo prime-select get-current
 
 # select offload mode
 sudo prime-select boot offload
-
-# to run program with a gpu
-__NV_PRIME_RENDER_OFFLOAD=<nvidia_id> __GLX_VENDOR_LIBRARY_NAME=nvidia <command>
 ```
 
 Using a single graphics card
 
 ```sh
-# you can change nvidia to intel
+# select nvidia mode
 sudo prime-select boot nvidia
+
+# select intel mode
+sudo prime-select boot intel
 ```
 
 ### Adding a flathub repository
@@ -147,9 +147,7 @@ sudo zypper in power-profiles-daemon
 A huge suite of software for work and play.
 
 ```sh
-flatpak install flathub org.kde.kdenlive org.onlyoffice.desktopeditors com.orama_interactive.Pixelorama com.github.Matoking.protontricks com.vscodium.codium com.vysp3r.ProtonPlus com.heroicgameslauncher.hgl dev.vencord.Vesktop com.usebottles.bottles com.github.tchx84.Flatseal org.gtk.Gtk3theme.adw-gtk3-dark
-
-sudo flatpak override com.vscodium.codium --env=GTK_THEME=adw-gtk3-dark
+flatpak install flathub org.kde.kdenlive org.onlyoffice.desktopeditors com.orama_interactive.Pixelorama com.github.Matoking.protontricks com.vscodium.codium com.vysp3r.ProtonPlus com.heroicgameslauncher.hgl dev.vencord.Vesktop com.github.tchx84.Flatseal
 ```
 
 If you have problems with vscodium on Wayland session, you may use this command
@@ -244,7 +242,7 @@ sudo ./install.sh
 ```sh
 sudo zypper packages --unneeded
 # delete them using zypper
-sudo zypper remove <package_name>
+sudo zypper rm <package_name>
 
 flatpak repair
 flatpak uninstall --unused
@@ -274,6 +272,15 @@ cd Tela-circle-icon-theme
 sudo nvim .local/share/applications/com.github.Matoking.protontricks.desktop
 sudo nvim .local/share/applications/com.orama_interactive.Pixelorama.desktop
 sudo nvim .local/share/applications/dev.vencord.Vesktop.desktop
+```
+
+### Installing the unofficial GTK3 port of libadwaita
+
+Install theme from this repo https://github.com/lassekongo83/adw-gtk3
+
+```sh
+# adding support in flatpak applications
+flatpak install org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark
 ```
 
 ### ZSH installation and configuration

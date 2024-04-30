@@ -53,7 +53,7 @@ systemctl status dkms.service
 When installing drivers, it is very important to keep an eye on CPU load.
 
 ```sh
-# open gnome-system-monitor and monitor CPU load
+# open plasma-systemmonitor and monitor CPU load
 sudo zypper in nvidia-driver-G06-kmp-default nvidia-drivers-G06 nvidia-gl-G06 nvidia-gl-G06-32bit nvidia-utils-G06 nvidia-video-G06 nvidia-video-G06-32bit nvidia-compute-G06 nvidia-compute-G06-32bit
 ```
 

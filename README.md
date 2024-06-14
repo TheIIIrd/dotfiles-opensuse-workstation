@@ -1,167 +1,185 @@
 # OPENSUSE-CUSTOM-SETUP
-One more way to customize opensuse
+One more way to customize opensuse...
 
-## Working with software
+# Working with software
 
-### Repository list configuration
-The community repository allows you to greatly expand the list of available software for the system.
 
-> Make sure the local repository of the installation stick is turned off.
-> Add the Nvidia and Pacman community repositories.
-> You can do this through YaST.
+## Repository list configuration
+After installation, you should open YaST and configure the software repositories.
 
-### Zypper configuration
+- Make sure the local repository of the installation stick is turned off.
+- Add the Nvidia and Pacman community repositories.
 
-```sh
-sudo vim /etc/zypp/zypp.conf
-
-# add it to the file
-# normally this parameter is on line 403
-solver.onlyRequires = true
-```
-
-### Uninstalling software
-Some of the out-of-the-box software I never needed. So, I just delete it.
+> `zypper ref` - refreshing a repository means downloading metadata of packages from the medium (if needed).
+> 
+> `zypper dup` - perform a distribution upgrade. This command applies the state of (specified) repositories onto the system; upgrades (or even downgrades) installed packages to versions found in repositories, removes packages that are no longer in the repositories and pose a dependency problem for the upgrade, handles package splits and renames, etc.
+> 
+> `zypper ve` - check whether dependencies of installed packages are satisfied. + In case that any dependency problems are found, zypper suggests packages to install or remove to fix them.
 
 ```sh
-sudo zypper rm kmahjongg kmines kreversi ksudoku akregator kaddressbook konversation kmail kontact ktnef knotes kpat mbox-importer libkdegames kdegames-carddecks-default akonadi-contacts akonadi-import-wizard akonadi-calendar akonadi-calendar-tools
+sudo zypper ref 
+sudo zypper dup 
+sudo zypper ve 
 ```
 
-### Installing useful software
+
+## Uninstalling software
+By default, after installing the system, the workstation is overloaded with unnecessary programs. It is advisable to uninstall them so that they do not interfere with the use of the system.
+
+- If you have installed KDE Plasma:
+```sh
+sudo zypper rm kmahjongg kmines kreversi ksudoku akregator kaddressbook konversation kmail kontact ktnef knotes kpat mbox-importer libkdegames kdegames-carddecks-default akonadi-contacts akonadi-import-wizard akonadi-calendar akonadi-calendar-tools opensuse-welcome 
+```
+
+- If you have installed GNOME:
+```sh
+sudo zypper rm gnome-contacts gnome-weather gnome-maps gnome-console gnome-chess gnome-mahjongg gnome-mines gnome-sudoku lightsoff quadrapassel swell-foop iagno evolution polari cheese opensuse-welcome 
+```
+
+
+## Installing useful software
 Basic packages that we will need as we work with the system.
 
+> Git wget curl curl aria2 is needed to work with the internet.
+> 
+> Inxi fastfetch displays useful information about the system.
+> 
+> Neovim is a powerful text editor.
+> 
+> Zsh is a modern command shell.
+> 
+> OBS Package Installer analog of yay/paru.
+> 
+> java-21-openjdk python311 python311-pip gcc-c++ clang clang-tools are needed to work with Java, Python and C++.
+> 
+> Dynamic Kernel Module Support is needed to install the Nvidia driver.
+
 ```sh
-sudo zypper ref
-sudo zypper dup
-
-sudo zypper in git wget curl inxi opi zsh neovim fastfetch java-21-openjdk python311 python311-pip gcc-c++ clang aria2 dkms
-
-# choose the latest version of java
-sudo update-alternatives --config java
-java --version
-
-# load dkms daemon (need to reboot)
-sudo systemctl enable dkms.service
-systemctl status dkms.service
+sudo zypper in git wget curl aria2 inxi fastfetch neovim zsh opi java-21-openjdk python311 python311-pip gcc-c++ clang clang-tools dkms 
 ```
 
-### NVIDIA graphics card driver installation
-When installing drivers, it is very important to keep an eye on CPU load.
-
+If more than one version of Java is installed, this command will let you select the primary version.
 ```sh
-# open plasma-systemmonitor and monitor CPU load
-sudo zypper in nvidia-driver-G06-kmp-default nvidia-drivers-G06 nvidia-gl-G06 nvidia-gl-G06-32bit nvidia-utils-G06 nvidia-video-G06 nvidia-video-G06-32bit nvidia-compute-G06 nvidia-compute-G06-32bit
+sudo update-alternatives --config java 
 ```
 
-Reboot and check inxi
 
+## NVIDIA graphics card driver installation
+Proper (most likely) installation of the Nvidia driver on OpenSUSE with dependencies installed to make the Wayland protocol run smoothly.
+
+> Starting the DKMS daemon. It is obligatory to reboot!
 ```sh
-inxi -G
+sudo systemctl enable dkms.service 
 ```
 
-Using multiple graphics cards
-
+> After installation, make sure the system is not under load.
+> plasma-systemmonitor gnome-system-monitor htop or btop.
 ```sh
-# check prime mode
-sudo prime-select get-current
-
-# select offload mode
-sudo prime-select boot offload
+sudo zypper in nvidia-compute-G06 nvidia-compute-G06-32bit nvidia-compute-utils-G06 nvidia-drivers-G06 nvidia-driver-G06-kmp-default nvidia-gl-G06 nvidia-gl-G06-32bit nvidia-utils-G06 nvidia-video-G06 nvidia-video-G06-32bit libnvidia-egl-wayland1 libnvidia-egl-wayland1-32bit 
 ```
 
-Using a single graphics card
-
+> It is advisable to reboot again and check if the installation is correct using the following commands.
 ```sh
-# select nvidia mode
-sudo prime-select boot nvidia
-
-# select intel mode
-sudo prime-select boot intel
+systemctl status dkms.service 
+sudo zypper se nvidia 
+nvidia-smi -q 
+inxi -G 
 ```
 
-### Adding a flathub repository
-Flathub is used further to install some programs.
 
+## Installing additional software
+
+- If you have installed KDE Plasma:
 ```sh
-flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+sudo zypper in torbrowser-launcher inkscape krita gamemode steam vlc partitionmanager 
 ```
 
-### Basic software installation
-This is the base.
-
+- If you have installed GNOME:
 ```sh
-sudo zypper in vlc steam krita inkscape torbrowser-launcher transmission-qt partitionmanager gamemode
+sudo zypper in torbrowser-launcher inkscape krita gamemode steam vlc gparted gnome-font-viewer 
 ```
 
-### Virt-manager installation
-One of the best virtual machine managers.
+
+## Virt-manager installation
+Virtual machine manager to work with QEMU/KVM.
 
 ```sh
-sudo zypper in qemu-kvm bridge-utils virt-manager libguestfs guestfs-tools virt-install libvirt-devel libvirt
-
-sudo usermod -G libvirt -a <username>
+sudo zypper in qemu-kvm bridge-utils virt-manager libguestfs guestfs-tools virt-install libvirt-devel libvirt 
 ```
 
-Change the lines in qemu.conf with access to different functions.
-
-> You have to change these lines:
-> ```user = "<username>"```
-> ```group = "libvirt"```
-
+> For virt-manager to work correctly, it is recommended to add a user to the libvirt group and to configure qemu.conf.
 ```sh
-sudo nvim /etc/libvirt/qemu.conf
+sudo usermod -G libvirt -a <username> 
 ```
 
+> You have to change these lines: `user = "<username>"`, `group = "libvirt"`.
 ```sh
-sudo systemctl enable libvirtd
+sudo vim /etc/libvirt/qemu.conf 
 ```
 
-### Enabling power safe tool
-You can use tlp, or delete it and install power-profiles-daemon
-
-> Use tlp
-
+> Running libvirtd background processes.
 ```sh
-sudo systemctl enable tlp.service
+sudo systemctl enable libvirtd 
 ```
 
-> Use power-profiles-daemon
 
+## Adding a flathub repository
+Flathub makes it easy to install and update applications for any Linux distribution. Browse popular categories such as performance, graphics, games, and more, or find your favorite application.
+
+> Check for a connected flathub repository. It should be enabled out of the box by default in OpenSUSE.
 ```sh
-sudo systemctl disable tlp.service
-
-# zypper will remove tlp
-sudo zypper in power-profiles-daemon
+flatpak remotes --show-details 
 ```
 
-### Flatpak application installation
-A huge suite of software for work and play.
-
+> If not, this command will add the flathub repository to the list.
 ```sh
-flatpak install flathub org.kde.kdenlive org.onlyoffice.desktopeditors com.orama_interactive.Pixelorama com.github.Matoking.protontricks com.vscodium.codium com.vysp3r.ProtonPlus com.heroicgameslauncher.hgl dev.vencord.Vesktop com.github.tchx84.Flatseal
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo 
 ```
 
-If you have problems with vscodium on Wayland session, you may use this command
+
+## Flatpak application installation
+
+> Installing a theme for GTK3 applications.
 ```sh
-flatpak override --user --nosocket=wayland com.vscodium.codium
+flatpak install org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark 
 ```
 
-### Installing mod launcher for games (especially important for Risk Of Rain 2)
-Native launcher for modding games.
-
-> Download the latest release of the program
-> https://github.com/ebkr/r2modmanPlus/releases
-
+- If you have installed KDE Plasma
 ```sh
-./<package_name>.AppImage
+flatpak install flathub com.github.tchx84.Flatseal page.codeberg.libre_menu_editor.LibreMenuEditor com.github.wwmm.easyeffects me.iepure.devtoolbox com.vysp3r.ProtonPlus com.github.Matoking.protontricks org.onlyoffice.desktopeditors org.kde.kdenlive com.vscodium.codium dev.vencord.Vesktop com.heroicgameslauncher.hgl 
+```
+
+- If you have installed GNOME
+```sh
+flatpak install flathub com.github.tchx84.Flatseal com.mattjakeman.ExtensionManager io.github.realmazharhussain.GdmSettings page.codeberg.libre_menu_editor.LibreMenuEditor com.github.wwmm.easyeffects io.missioncenter.MissionCenter com.raggesilver.BlackBox me.iepure.devtoolbox com.vysp3r.ProtonPlus com.github.Matoking.protontricks org.onlyoffice.desktopeditors org.kde.kdenlive com.vscodium.codium dev.vencord.Vesktop com.heroicgameslauncher.hgl 
+```
+
+> If you have problems with vscodium on Wayland session, you may use this command:
+```sh
+flatpak override --user --nosocket=wayland com.vscodium.codium 
+```
+
+
+## Installing mod launcher for games
+[Native launcher](https://github.com/ebkr/r2modmanPlus) for modding games.
+
+> Download the [latest release](https://github.com/ebkr/r2modmanPlus/releases). For example:
+```sh
+wget https://github.com/ebkr/r2modmanPlus/releases/download/v3.1.48/r2modman-3.1.48.AppImage 
+```
+
+> Set permission to run the program.
+```sh
+chmod +x <package_name>.AppImage 
 ```
 
 > Create desktop shortcut
-
 ```sh
-nvim .local/share/applications/r2modman.desktop
+nvim .local/share/applications/r2modman.desktop 
+```
 
-# add it to the file
+> Add this to r2modman.desktop. Don't forget to change `/path/to/r2modman.AppImage`!
+```
 [Desktop Entry]
 Name=R2modman
 Comment=Infinite mod generator
@@ -173,36 +191,69 @@ Categories=Game;
 MimeType=x-scheme-handler/ror2mm;
 ```
 
-### Installing the native engine for the game STALKER
-Engine for the STALKER series of games. Makes the game native.
 
+## Installing the native engine for the game STALKER
+[Engine for the STALKER](https://github.com/OpenXRay/xray-16) series of games. Makes the game native.
+
+> Download the necessary dependencies.
 ```sh
-# download the necessary dependencies
-sudo zypper in git cmake make gcc gcc-c++ glew-devel openal-devel cryptopp-devel libogg-devel libtheora-devel libvorbis-devel SDL2-devel lzo-devel libjpeg-turbo-devel
-
-git clone https://github.com/OpenXRay/xray-16.git --recurse-submodules
-cd xray-16 && mkdir bin && cd bin
-cmake .. -DCMAKE_INSTALL_LIBDIR=lib64 -DCMAKE_INSTALL_PREFIX=/usr
-
-# the number of cores is counted from zero
-# if you have 4 cores, you should write 3
-make -j<numberofcores>
-
-QA_RPATHS=$(( 0x0001|0x0010 )) make package
-sudo rpm -ivh <package_name>
+sudo zypper in git cmake make gcc gcc-c++ glew-devel openal-devel cryptopp-devel libogg-devel libtheora-devel libvorbis-devel SDL2-devel lzo-devel libjpeg-turbo-devel 
 ```
 
-### Installing the open source version of the Minecraft Launcher
-Launcher with open source code and convenient settings.
-
-> Download the latest release of the program (we need a .jar version of the game) (! maybe to old !)
-> https://tlaun.ch/jar
-> Create desktop shortcut
-
+> To get the source code, run:
 ```sh
-nvim ~/.local/share/applications/Minecraft.desktop
+git clone https://github.com/OpenXRay/xray-16.git --recurse-submodules 
+```
 
-# add it to the file
+> Enter the repository clone and create a building directory there. The name of the directory doesn't matter, e.g. bin or build (bin will be used for the rest of this documentation to refer to this directory). An example for creating the directory and entering it for the terminal:
+```sh
+cd xray-16 && mkdir bin && cd bin 
+```
+
+> Once you're inside of bin, configure the project by running:
+```sh
+cmake .. -DCMAKE_INSTALL_LIBDIR=lib64 -DCMAKE_INSTALL_PREFIX=/usr 
+```
+
+> To compile the engine, run:
+```sh
+make -jx 
+```
+
+> ! x denoted the number of threads you want to assign to the compile process. For example, if you want to use 4 threads:
+```sh
+make -j4 
+```
+
+> To make the engine, run:
+```
+QA_RPATHS=$(( 0x0001|0x0010 )) make package 
+```
+
+- To install via zypper, run:
+```sh
+sudo zypper in /path/to/<package_name>.rpm 
+```
+
+- To install via rpm, run:
+```
+sudo rpm -ivh /path/to/<package_name>.rpm 
+```
+
+
+## Installing the open source version of the Minecraft Launcher
+[Launcher](https://llaun.ch) with open source code and convenient settings.
+
+> Download the [latest release](https://llaun.ch/jar).
+> Alternative sources [one](https://llaun.ch) or [two](https://lln4.ru).
+
+> Create desktop shortcut.
+```sh
+nvim ~/.local/share/applications/minecraft.desktop 
+```
+
+> Add this to minecraft.desktop. Don't forget to change `/path/to/LegacyLauncher_legacy.jar`!
+```
 [Desktop Entry]
 Name=Minecraft
 Comment=Infinite idea generator
@@ -213,125 +264,175 @@ Type=Application
 Categories=Game;
 ```
 
-### Installing a program for fan control on MSI notebooks
-A system for managing special parameters on MSI laptops.
 
-> Download the latest version of the software
-> https://github.com/dmitry-s93/MControlCenter/releases/
+## Fan control on MSI notebooks
 
+The application requires the `ec_sys` module with option `write_support=1` to run. If the `ec_sys` kernel module is not included in your distribution's kernel, you can use the `acpi_ec` kernel module.
+
+> Checking for the ec_sys module:
 ```sh
-sudo ./install.sh
+sudo modinfo ec_sys
 ```
 
-### Clear system
-
+> Create ec_sys.conf:
 ```sh
-sudo zypper packages --unneeded
-# delete them using zypper
-sudo zypper rm <package_name>
+sudo vim /etc/modules-load.d/ec_sys.conf 
+```
 
-flatpak repair
+> Add this to ec_sys.conf:
+```
+# Load ec_sys at boot
+ec_sys write_support=1
+```
+
+Installation from the archive
+1. Download `MControlCenter-x.x.x.tar.gz` from the [releases](https://github.com/dmitry-s93/MControlCenter/releases) page.
+2. Unpack the archive with the program.
+3. Open terminal in unpacked directory.
+4. Run the script `sudo ./install`.
+
+
+## Zypper configuration
+After installing the required packages, it is desirable to disable the installation of recommended packages by default so that the system remains clean when upgrading.
+
+> Normally this parameter is on line 403 `solver.onlyRequires = true`.
+```sh
+sudo vim /etc/zypp/zypp.conf
+```
+
+
+## System integrity verification
+
+- Verify rpm packages:
+```sh
+sudo zypper ref 
+sudo zypper dup 
+sudo zypper ve
+```
+
+- Verify flatpak packages:
+```sh
+flatpak update
 flatpak uninstall --unused
+flatpak repair 
 ```
 
-## System customization
 
-### Icon setup
-> To make icons available to all users of the system, instead of ```./install.sh standard```, run ```sudo ./install.sh standard```.
+# System customization
 
+## Icon setup
+> To make icons available to all users of the system, instead of `./install.sh standard`, run `sudo ./install.sh standard`.
+
+> Traditional icons:
 ```sh
-# traditional icons
-git clone https://github.com/vinceliuice/Tela-icon-theme.git
-cd Tela-icon-theme
-./install.sh standard
+git clone https://github.com/vinceliuice/Tela-icon-theme.git 
+cd Tela-icon-theme 
+./install.sh standard 
+```
 
-# rounded icons
-git clone https://github.com/vinceliuice/Tela-circle-icon-theme.git
-cd Tela-circle-icon-theme
-./install.sh standard
+> Rounded icons
+```sh
+git clone https://github.com/vinceliuice/Tela-circle-icon-theme.git 
+cd Tela-circle-icon-theme 
+./install.sh standard 
 ```
 
 > If you want to change some icons
-
 ```sh
-sudo nvim .local/share/applications/com.github.Matoking.protontricks.desktop
-sudo nvim .local/share/applications/com.orama_interactive.Pixelorama.desktop
-sudo nvim .local/share/applications/dev.vencord.Vesktop.desktop
+cat /var/lib/flatpak/exports/share/applications/com.github.Matoking.protontricks.desktop 
+nvim .local/share/applications/com.github.Matoking.protontricks.desktop 
+Icon=katomic
+
+cat /var/lib/flatpak/exports/share/applications/dev.vencord.Vesktop.desktop 
+nvim .local/share/applications/dev.vencord.Vesktop.desktop 
+Icon=discord
+
+cat /var/lib/flatpak/exports/share/applications/me.iepure.devtoolbox.desktop 
+nvim .local/share/applications/me.iepure.devtoolbox.desktop 
+Icon=via
+
+cat /var/lib/flatpak/exports/share/applications/page.codeberg.libre_menu_editor.LibreMenuEditor.desktop 
+nvim .local/share/applications/page.codeberg.libre_menu_editor.LibreMenuEditor.desktop 
+Icon=org.gnome.Tecla.svg
 ```
 
-### Installing the unofficial GTK3 port of libadwaita
-Install theme from this repo https://github.com/lassekongo83/adw-gtk3
+
+## Installing the unofficial GTK3 port of libadwaita
+Install theme from [this](https://github.com/lassekongo83/adw-gtk3) repo.
 
 ```sh
-# adding support in flatpak applications
-flatpak install org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark
+# adding support in flatpak applications 
+flatpak install org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark 
 ```
 
-### ZSH installation and configuration
+
+## ZSH installation and configuration
 Install zsh and run it.
 
 > Zsh will ask you to configure it after the first run.
 > Look at all the items and click 0 in each if you are satisfied.
-
 ```sh
 sudo zypper in zsh
+```
 
-# how to run
-zsh
+> To run
+```sh
+zsh 
 ```
 
 > This font supports icons.
 > It is necessary for correct output of information in the terminal.
-
 ```sh
-wget https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf
-
-sudo mv MesloLGS\ NF\ Regular.ttf /usr/share/fonts/
+wget https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf 
 ```
 
-### Oh-my-zsh framework
+
+## Oh-my-zsh framework
 Oh-my-zsh will extend the capabilities of regular zsh.
 
 ```sh
-sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)" 
 ```
 
-### Plugins for zsh
+
+## Plugins for zsh
 These extensions will provide hints while using zsh.
 
 ```sh
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-git clone https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting 
+git clone https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions 
 ```
 
-> After installing the zsh extensions, you should put them in ```.zshrc```.
-> Open the config and find the line ```plugins=(git)```.
-> It should be changed to ```plugins=(git zsh-autosuggestions zsh-syntax-highlighting)```.
-
+> After installing the zsh extensions, you should put them in `.zshrc`.
+> 
+> Open the config and find the line `plugins=(git)`.
+> 
+> It should be changed to `plugins=(git zsh-autosuggestions zsh-syntax-highlighting)`.
 ```sh
-nvim .zshrc
-
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
-
-# restart the config
-source .zshrc
+nvim .zshrc 
 ```
 
-### P10K theme
+> Restart the config
+```sh
+source .zshrc 
+```
+
+
+## P10K theme
 P10k will make zsh more beautiful.
 
 ```sh
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k 
 ```
 
-> After installing the 10k, you should put them in ```.zshrc```.
-> You must replace the value of ZSH_THEME with ```ZSH_THEME="powerlevel10k/powerlevel10k"```.
-
+> After installing the 10k, you should put them in `.zshrc`.
+> 
+> You must replace the value of ZSH_THEME with `ZSH_THEME="powerlevel10k/powerlevel10k"`.
 ```sh
-nvim .zshrc
+nvim .zshrc 
+```
 
-ZSH_THEME="powerlevel10k/powerlevel10k"
-
-# restart the config
-source .zshrc
+> Restart the config
+```sh
+source .zshrc 
 ```

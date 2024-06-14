@@ -2,15 +2,12 @@
 One more way to customize opensuse.
 
 <p align="center">
-<img alt="Screenshot 1" src="pictures/screenshot-1.png"/>
+  <img alt="Screenshot 1" src="pictures/screenshot-1.png"/>
+  <img alt="Screenshot 2" src="pictures/screenshot-2.png"/>
 </p>
 
-<p align="center">
-<img alt="Screenshot 2" src="pictures/screenshot-2.png"/>
-</p>
 
 # Working with software
-
 
 ## Repository list configuration
 After installation, you should open YaST and configure the software repositories.
@@ -72,7 +69,7 @@ sudo update-alternatives --config java
 ```
 
 
-## NVIDIA graphics card driver installation
+## Nvidia graphics card driver installation
 Proper (most likely) installation of the Nvidia driver on OpenSUSE with dependencies installed to make the Wayland protocol run smoothly.
 
 > Starting the DKMS daemon. It is obligatory to reboot!
@@ -171,14 +168,14 @@ flatpak override --user --nosocket=wayland com.vscodium.codium
 ## Installing mod launcher for games
 [Native launcher](https://github.com/ebkr/r2modmanPlus) for modding games.
 
-> Download the [latest release](https://github.com/ebkr/r2modmanPlus/releases). For example:
+> Download the [latest release](https://github.com/ebkr/r2modmanPlus/releases). R2modman.AppImage has the leading version in the name. It can be found in program releases.
 ```sh
-wget https://github.com/ebkr/r2modmanPlus/releases/download/v3.1.48/r2modman-3.1.48.AppImage 
+wget https://github.com/ebkr/r2modmanPlus/releases/download/v3.1.48/r2modman.AppImage
 ```
 
 > Set permission to run the program.
 ```sh
-chmod +x <package_name>.AppImage 
+chmod +x r2modman.AppImage
 ```
 
 > Create desktop shortcut
@@ -293,11 +290,20 @@ sudo vim /etc/modules-load.d/ec_sys.conf
 ec_sys write_support=1
 ```
 
-Installation from the archive
-1. Download `MControlCenter-x.x.x.tar.gz` from the [releases](https://github.com/dmitry-s93/MControlCenter/releases) page.
-2. Unpack the archive with the program.
-3. Open terminal in unpacked directory.
-4. Run the script `sudo ./install`.
+> Download `MControlCenter-x.x.x.tar.gz` from the [releases](https://github.com/dmitry-s93/MControlCenter/releases) page.
+```sh
+wget https://github.com/dmitry-s93/MControlCenter/releases/download/0.4.1/MControlCenter-0.4.1-bin.tar.gz
+```
+
+> Unpack the archive with the program.
+```sh
+tar -xvf MControlCenter-0.4.1-bin.tar.gz
+```
+
+> Open terminal in unpacked directory. Run the script.
+```sh
+sudo ./install
+```
 
 
 ## Zypper configuration
@@ -366,10 +372,25 @@ Icon=org.gnome.Tecla.svg
 
 
 ## Installing the unofficial GTK3 port of libadwaita
-Install theme from [this](https://github.com/lassekongo83/adw-gtk3) repo.
 
+> Install theme from [this](https://github.com/lassekongo83/adw-gtk3) repo.
 ```sh
-# adding support in flatpak applications 
+wget https://github.com/lassekongo83/adw-gtk3/releases/download/v5.3/adw-gtk3v5.3.tar.xz
+```
+
+> Unzip the archive
+```sh
+tar -xvf adw-gtk3v5.3.tar.xz
+```
+
+> Install theme
+```sh
+sudo cp -r ./adw-gtk3v5.3/adw-gtk3 /usr/share/themes/ 
+sudo cp -r ./adw-gtk3v5.3/adw-gtk3-dark /usr/share/themes/ 
+```
+
+> Add flatpak applications theme support
+```sh
 flatpak install org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark 
 ```
 

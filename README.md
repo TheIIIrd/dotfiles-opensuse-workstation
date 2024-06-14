@@ -394,6 +394,34 @@ sudo cp -r ./adw-gtk3v5.3/adw-gtk3-dark /usr/share/themes/
 flatpak install org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark 
 ```
 
+## GNOME extensions
+
+```
+# changing keyboard layout without a popup window
+quick-lang-switch@ankostis.gmail.com
+
+# application icon running in the background
+appindicatorsupport@rgcjonas.gmail.com
+
+# weather display for your region
+openweather-extension@jenslody.de
+
+# Gnome Shell interface blur
+blur-my-shell@aunetx
+
+# clipboard manager for Gnome Shell
+clipboard-indicator@tudmotu.com
+
+# sleep mode on/off
+caffeine@patapon.info
+
+# system performance monitoring
+Vitals@CoreCoding.com
+
+# advanced Gnome Shell settings
+just-perfection-desktop@just-perfection
+```
+
 
 ## ZSH installation and configuration
 Install zsh and run it.

@@ -1,6 +1,10 @@
 # OPENSUSE-CUSTOM-SETUP
 One more way to customize opensuse.
 
+<p align="center">
+<img alt="Screenshot" src="pictures/screenshot-1.png"/>
+</p>
+
 # Working with software
 
 

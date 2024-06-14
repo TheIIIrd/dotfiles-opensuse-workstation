@@ -127,6 +127,24 @@ sudo vim /etc/libvirt/qemu.conf
 sudo systemctl enable libvirtd 
 ```
 
+## Installing codecs from Packman repositories
+You need to play online or offline multimedia content but the content does not want to play or shows errors. Usually this is a sign of [missing codecs](https://en.opensuse.org/SDB:Installing_codecs_from_Packman_repositories): install these packages from Packman to play most music and video:
+
+- ffmpeg
+- gstreamer-plugins-good
+- gstreamer-plugins-bad
+- gstreamer-plugins-ugly
+- gstreamer-plugins-libav
+- libavcodec
+- vlc-codecs
+
+> Opi (Open Build Service Package Installer) works on both Leap and Tumbleweed, and is the easiest way to install community packages and the codecs:
+
+```sh
+sudo zypper install opi
+opi codecs
+```
+
 
 ## Adding a flathub repository
 Flathub makes it easy to install and update applications for any Linux distribution. Browse popular categories such as performance, graphics, games, and more, or find your favorite application.

@@ -4,7 +4,6 @@ One more way to customize opensuse
 ## Working with software
 
 ### Repository list configuration
-
 The community repository allows you to greatly expand the list of available software for the system.
 
 > Make sure the local repository of the installation stick is turned off.
@@ -22,7 +21,6 @@ solver.onlyRequires = true
 ```
 
 ### Uninstalling software
-
 Some of the out-of-the-box software I never needed. So, I just delete it.
 
 ```sh
@@ -30,7 +28,6 @@ sudo zypper rm kmahjongg kmines kreversi ksudoku akregator kaddressbook konversa
 ```
 
 ### Installing useful software
-
 Basic packages that we will need as we work with the system.
 
 ```sh
@@ -49,7 +46,6 @@ systemctl status dkms.service
 ```
 
 ### NVIDIA graphics card driver installation
-
 When installing drivers, it is very important to keep an eye on CPU load.
 
 ```sh
@@ -84,7 +80,6 @@ sudo prime-select boot intel
 ```
 
 ### Adding a flathub repository
-
 Flathub is used further to install some programs.
 
 ```sh
@@ -92,7 +87,6 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
 ```
 
 ### Basic software installation
-
 This is the base.
 
 ```sh
@@ -100,7 +94,6 @@ sudo zypper in vlc steam krita inkscape torbrowser-launcher transmission-qt part
 ```
 
 ### Virt-manager installation
-
 One of the best virtual machine managers.
 
 ```sh
@@ -123,8 +116,7 @@ sudo nvim /etc/libvirt/qemu.conf
 sudo systemctl enable libvirtd
 ```
 
-### Enabling power safe tools
-
+### Enabling power safe tool
 You can use tlp, or delete it and install power-profiles-daemon
 
 > Use tlp
@@ -143,7 +135,6 @@ sudo zypper in power-profiles-daemon
 ```
 
 ### Flatpak application installation
-
 A huge suite of software for work and play.
 
 ```sh
@@ -151,13 +142,11 @@ flatpak install flathub org.kde.kdenlive org.onlyoffice.desktopeditors com.orama
 ```
 
 If you have problems with vscodium on Wayland session, you may use this command
-
 ```sh
 flatpak override --user --nosocket=wayland com.vscodium.codium
 ```
 
 ### Installing mod launcher for games (especially important for Risk Of Rain 2)
-
 Native launcher for modding games.
 
 > Download the latest release of the program
@@ -185,7 +174,6 @@ MimeType=x-scheme-handler/ror2mm;
 ```
 
 ### Installing the native engine for the game STALKER
-
 Engine for the STALKER series of games. Makes the game native.
 
 ```sh
@@ -205,7 +193,6 @@ sudo rpm -ivh <package_name>
 ```
 
 ### Installing the open source version of the Minecraft Launcher
-
 Launcher with open source code and convenient settings.
 
 > Download the latest release of the program (we need a .jar version of the game) (! maybe to old !)
@@ -227,7 +214,6 @@ Categories=Game;
 ```
 
 ### Installing a program for fan control on MSI notebooks
-
 A system for managing special parameters on MSI laptops.
 
 > Download the latest version of the software
@@ -251,7 +237,6 @@ flatpak uninstall --unused
 ## System customization
 
 ### Icon setup
-
 > To make icons available to all users of the system, instead of ```./install.sh standard```, run ```sudo ./install.sh standard```.
 
 ```sh
@@ -275,7 +260,6 @@ sudo nvim .local/share/applications/dev.vencord.Vesktop.desktop
 ```
 
 ### Installing the unofficial GTK3 port of libadwaita
-
 Install theme from this repo https://github.com/lassekongo83/adw-gtk3
 
 ```sh
@@ -284,7 +268,6 @@ flatpak install org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark
 ```
 
 ### ZSH installation and configuration
-
 Install zsh and run it.
 
 > Zsh will ask you to configure it after the first run.
@@ -307,7 +290,6 @@ sudo mv MesloLGS\ NF\ Regular.ttf /usr/share/fonts/
 ```
 
 ### Oh-my-zsh framework
-
 Oh-my-zsh will extend the capabilities of regular zsh.
 
 ```sh
@@ -315,7 +297,6 @@ sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/ins
 ```
 
 ### Plugins for zsh
-
 These extensions will provide hints while using zsh.
 
 ```sh
@@ -337,7 +318,6 @@ source .zshrc
 ```
 
 ### P10K theme
-
 P10k will make zsh more beautiful.
 
 ```sh

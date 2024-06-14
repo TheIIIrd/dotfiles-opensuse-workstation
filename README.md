@@ -141,7 +141,7 @@ You need to play online or offline multimedia content but the content does not w
 > Opi (Open Build Service Package Installer) works on both Leap and Tumbleweed, and is the easiest way to install community packages and the codecs:
 
 ```sh
-sudo zypper install opi
+sudo zypper in opi
 opi codecs
 ```
 

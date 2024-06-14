@@ -1,5 +1,5 @@
 # OPENSUSE-CUSTOM-SETUP
-One more way to customize opensuse...
+One more way to customize opensuse.
 
 # Working with software
 

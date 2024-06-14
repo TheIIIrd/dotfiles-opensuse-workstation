@@ -2,7 +2,11 @@
 One more way to customize opensuse.
 
 <p align="center">
-<img alt="Screenshot" src="pictures/screenshot-1.png"/>
+<img alt="Screenshot 1" src="pictures/screenshot-1.png"/>
+</p>
+
+<p align="center">
+<img alt="Screenshot 2" src="pictures/screenshot-2.png"/>
 </p>
 
 # Working with software

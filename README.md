@@ -74,6 +74,7 @@ Proper (most likely) installation of the Nvidia driver on OpenSUSE with dependen
 
 > Starting the DKMS daemon. It is obligatory to reboot!
 ```sh
+sudo zypper in dkms 
 sudo systemctl enable dkms.service 
 ```
 
@@ -141,8 +142,8 @@ You need to play online or offline multimedia content but the content does not w
 > Opi (Open Build Service Package Installer) works on both Leap and Tumbleweed, and is the easiest way to install community packages and the codecs:
 
 ```sh
-sudo zypper in opi
-opi codecs
+sudo zypper in opi 
+opi codecs 
 ```
 
 
@@ -188,12 +189,12 @@ flatpak override --user --nosocket=wayland com.vscodium.codium
 
 > Download the [latest release](https://github.com/ebkr/r2modmanPlus/releases). R2modman.AppImage has the leading version in the name. It can be found in program releases.
 ```sh
-wget https://github.com/ebkr/r2modmanPlus/releases/download/v3.1.48/r2modman.AppImage
+wget https://github.com/ebkr/r2modmanPlus/releases/download/v3.1.48/r2modman.AppImage 
 ```
 
 > Set permission to run the program.
 ```sh
-chmod +x r2modman.AppImage
+chmod +x r2modman.AppImage 
 ```
 
 > Create desktop shortcut
@@ -294,7 +295,7 @@ The application requires the `ec_sys` module with option `write_support=1` to ru
 
 > Checking for the ec_sys module:
 ```sh
-sudo modinfo ec_sys
+sudo modinfo ec_sys 
 ```
 
 > Create ec_sys.conf:
@@ -310,17 +311,17 @@ ec_sys write_support=1
 
 > Download `MControlCenter-x.x.x.tar.gz` from the [releases](https://github.com/dmitry-s93/MControlCenter/releases) page.
 ```sh
-wget https://github.com/dmitry-s93/MControlCenter/releases/download/0.4.1/MControlCenter-0.4.1-bin.tar.gz
+wget https://github.com/dmitry-s93/MControlCenter/releases/download/0.4.1/MControlCenter-0.4.1-bin.tar.gz 
 ```
 
 > Unpack the archive with the program.
 ```sh
-tar -xvf MControlCenter-0.4.1-bin.tar.gz
+tar -xvf MControlCenter-0.4.1-bin.tar.gz 
 ```
 
 > Open terminal in unpacked directory. Run the script.
 ```sh
-sudo ./install
+sudo ./install 
 ```
 
 
@@ -329,7 +330,7 @@ After installing the required packages, it is desirable to disable the installat
 
 > Normally this parameter is on line 403 `solver.onlyRequires = true`.
 ```sh
-sudo vim /etc/zypp/zypp.conf
+sudo vim /etc/zypp/zypp.conf 
 ```
 
 
@@ -339,13 +340,13 @@ sudo vim /etc/zypp/zypp.conf
 ```sh
 sudo zypper ref 
 sudo zypper dup 
-sudo zypper ve
+sudo zypper ve 
 ```
 
 - Verify flatpak packages:
 ```sh
-flatpak update
-flatpak uninstall --unused
+flatpak update 
+flatpak uninstall --unused 
 flatpak repair 
 ```
 
@@ -393,18 +394,18 @@ Icon=org.gnome.Tecla.svg
 
 > Install theme from [this](https://github.com/lassekongo83/adw-gtk3) repo.
 ```sh
-wget https://github.com/lassekongo83/adw-gtk3/releases/download/v5.3/adw-gtk3v5.3.tar.xz
+wget https://github.com/lassekongo83/adw-gtk3/releases/download/v5.3/adw-gtk3v5.3.tar.xz 
 ```
 
 > Unzip the archive
 ```sh
-tar -xvf adw-gtk3v5.3.tar.xz
+tar -xvf adw-gtk3v5.3.tar.xz 
 ```
 
 > Install theme
 ```sh
-sudo cp -r ./adw-gtk3v5.3/adw-gtk3 /usr/share/themes/ 
-sudo cp -r ./adw-gtk3v5.3/adw-gtk3-dark /usr/share/themes/ 
+sudo cp -r adw-gtk3 /usr/share/themes/ 
+sudo cp -r adw-gtk3-dark /usr/share/themes/ 
 ```
 
 > Add flatpak applications theme support
@@ -447,7 +448,7 @@ Install zsh and run it.
 > Zsh will ask you to configure it after the first run.
 > Look at all the items and click 0 in each if you are satisfied.
 ```sh
-sudo zypper in zsh
+sudo zypper in zsh 
 ```
 
 > To run

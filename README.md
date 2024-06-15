@@ -191,12 +191,12 @@ flatpak override --user --nosocket=wayland com.vscodium.codium
 
 > Download the [latest release](https://github.com/ebkr/r2modmanPlus/releases). R2modman.AppImage has the leading version in the name. It can be found in program releases.
 ```sh
-wget https://github.com/ebkr/r2modmanPlus/releases/download/v3.1.48/r2modman.AppImage 
+wget https://github.com/ebkr/r2modmanPlus/releases/download/v3.1.48/r2modman-3.1.48.AppImage
 ```
 
 > Set permission to run the program.
 ```sh
-chmod +x r2modman.AppImage 
+chmod +x r2modman-3.1.48.AppImage
 ```
 
 > Create desktop shortcut

@@ -150,7 +150,7 @@ opi codecs
 
 
 ## Adding a flathub repository
-Flathub makes it easy to install and update applications for any Linux distribution. Browse popular categories such as performance, graphics, games, and more, or find your favorite application.
+[Flathub](https://flathub.org) makes it easy to install and update applications for any Linux distribution. Browse popular categories such as performance, graphics, games, and more, or find your favorite application.
 
 > Check for a connected flathub repository. It should be enabled out of the box by default in OpenSUSE.
 ```sh

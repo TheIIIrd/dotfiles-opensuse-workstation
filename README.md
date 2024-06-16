@@ -452,10 +452,6 @@ Install zsh and run it.
 > Look at all the items and click 0 in each if you are satisfied.
 ```sh
 sudo zypper in zsh 
-```
-
-> To run
-```sh
 zsh 
 ```
 

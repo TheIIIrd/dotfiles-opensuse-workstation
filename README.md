@@ -510,27 +510,82 @@ flatpak install flathub de.haeckerfelix.Fragments io.gitlab.liferooter.TextPiece
 ```
 
 ## GNOME extensions
-Extensions for GNOME that can improve the experience of using the system.
+[Extensions](https://extensions.gnome.org) for GNOME that can improve the experience of using the system.
+
+### Quick Lang Switch
+Quickly switch keyboard language layout without showing the switcher popup.
+
+<p align="center">
+  <img alt="Quick Lang Switch" src="https://extensions.gnome.org/extension-data/screenshots/screenshot_4559_wAth8NA.png"/>
+</p>
 
 ```
-# changing keyboard layout without a popup window
 quick-lang-switch@ankostis.gmail.com
+```
 
-# application icon running in the background
+### AppIndicator and KStatusNotifierItem Support
+Adds AppIndicator, KStatusNotifierItem and legacy Tray icons support to the Shell.
+
+<p align="center">
+  <img alt="AppIndicator and KStatusNotifierItem Support" src="https://extensions.gnome.org/extension-data/screenshots/screenshot_615.png"/>
+</p>
+
+```
 appindicatorsupport@rgcjonas.gmail.com
+```
 
-# Gnome Shell interface blur
+### Blur my Shell
+Adds a blur look to different parts of the GNOME Shell, including the top panel, dash and overview.
+
+<p align="center">
+  <img alt="Blur my Shell" src="https://extensions.gnome.org/extension-data/screenshots/screenshot_3193_7GUGlUq.png"/>
+</p>
+
+```
 blur-my-shell@aunetx
+```
 
-# clipboard manager for Gnome Shell
+
+### Clipboard Indicator
+The most popular clipboard manager for GNOME, with over 1M downloads.
+
+<p align="center">
+  <img alt="Clipboard Indicator" src="https://extensions.gnome.org/extension-data/screenshots/screenshot_779_GiNDiJq.png"/>
+</p>
+
+```
 clipboard-indicator@tudmotu.com
+```
 
-# sleep mode on/off
+### Caffeine
+Disable the screensaver and auto suspend.
+
+<p align="center">
+  <img alt="Caffeine" src="https://extensions.gnome.org/extension-data/screenshots/screenshot_517.png"/>
+</p>
+
+```
 caffeine@patapon.info
+```
 
-# system performance monitoring
+### Vitals
+A glimpse into your computer's temperature, voltage, fan speed, memory usage, processor load, system resources, network speed and storage stats. This is a one stop shop to monitor all of your vital sensors. Uses asynchronous polling to provide a smooth user experience.
+
+<p align="center">
+  <img alt="SVitals" src="https://extensions.gnome.org/extension-data/screenshots/screenshot_1460_QK8EEza.gif"/>
+</p>
+
+```
 Vitals@CoreCoding.com
+```
 
-# advanced Gnome Shell settings
+### Just Perfection
+Tweak Tool to Customize GNOME Shell, Change the Behavior and Disable UI Elements.
+
+<p align="center">
+  <img alt="Just Perfection" src="https://extensions.gnome.org/extension-data/screenshots/screenshot_3843_LMdlJMk.png"/>
+</p>
+
+```
 just-perfection-desktop@just-perfection
 ```

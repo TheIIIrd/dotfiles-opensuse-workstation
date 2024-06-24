@@ -96,6 +96,7 @@ inxi -G
 
 
 ## Installing additional software
+A standard set of applications for a home computer.
 
 - If you have installed KDE Plasma:
 ```sh
@@ -424,9 +425,6 @@ quick-lang-switch@ankostis.gmail.com
 
 # application icon running in the background
 appindicatorsupport@rgcjonas.gmail.com
-
-# weather display for your region
-openweather-extension@jenslody.de
 
 # Gnome Shell interface blur
 blur-my-shell@aunetx

@@ -47,7 +47,7 @@ sudo zypper rm gnome-contacts gnome-weather gnome-maps gnome-console gnome-chess
 ## Installing useful software
 Basic packages that we will need as we work with the system.
 
-> Git wget curl curl aria2 is needed to work with the internet.
+> Git wget2 curl curl aria2 is needed to work with the internet.
 > 
 > Inxi fastfetch displays useful information about the system.
 > 
@@ -62,7 +62,7 @@ Basic packages that we will need as we work with the system.
 > Dynamic Kernel Module Support is needed to install the Nvidia driver.
 
 ```sh
-sudo zypper in git wget curl aria2 inxi fastfetch neovim zsh opi java-21-openjdk python311 python311-pip gcc-c++ clang clang-tools dkms 
+sudo zypper in git wget2 curl aria2 inxi fastfetch neovim zsh opi java-21-openjdk python311 python311-pip gcc-c++ clang clang-tools dkms 
 ```
 
 If more than one version of Java is installed, this command will let you select the primary version.

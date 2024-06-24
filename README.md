@@ -374,25 +374,6 @@ cd Tela-circle-icon-theme
 ./install.sh standard 
 ```
 
-> If you want to change some icons
-```sh
-cat /var/lib/flatpak/exports/share/applications/com.github.Matoking.protontricks.desktop 
-nvim .local/share/applications/com.github.Matoking.protontricks.desktop 
-Icon=katomic
-
-cat /var/lib/flatpak/exports/share/applications/dev.vencord.Vesktop.desktop 
-nvim .local/share/applications/dev.vencord.Vesktop.desktop 
-Icon=discord
-
-cat /var/lib/flatpak/exports/share/applications/me.iepure.devtoolbox.desktop 
-nvim .local/share/applications/me.iepure.devtoolbox.desktop 
-Icon=via
-
-cat /var/lib/flatpak/exports/share/applications/page.codeberg.libre_menu_editor.LibreMenuEditor.desktop 
-nvim .local/share/applications/page.codeberg.libre_menu_editor.LibreMenuEditor.desktop 
-Icon=org.gnome.Tecla.svg
-```
-
 
 ## Installing the unofficial GTK3 port of libadwaita
 
@@ -415,31 +396,6 @@ sudo cp -r adw-gtk3-dark /usr/share/themes/
 > Add flatpak applications theme support
 ```sh
 flatpak install org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark 
-```
-
-## GNOME extensions
-
-```
-# changing keyboard layout without a popup window
-quick-lang-switch@ankostis.gmail.com
-
-# application icon running in the background
-appindicatorsupport@rgcjonas.gmail.com
-
-# Gnome Shell interface blur
-blur-my-shell@aunetx
-
-# clipboard manager for Gnome Shell
-clipboard-indicator@tudmotu.com
-
-# sleep mode on/off
-caffeine@patapon.info
-
-# system performance monitoring
-Vitals@CoreCoding.com
-
-# advanced Gnome Shell settings
-just-perfection-desktop@just-perfection
 ```
 
 
@@ -508,4 +464,73 @@ nvim .zshrc
 > Restart the config
 ```sh
 source .zshrc 
+```
+
+
+# Additional setup
+
+## Icon management
+Some application icons have no analogs in the Tela-icon set. By modifying the .desktop file, you can change the icon to your own as desired.
+
+- Protontricks
+```sh
+cp --no-preserve=mode /var/lib/flatpak/exports/share/applications/com.github.Matoking.protontricks.desktop ~/.local/share/applications/com.github.Matoking.protontricks.desktop 
+sed -i 's/^Icon=com.github.Matoking.protontricks$/Icon=katomic/g' ~/.local/share/applications/com.github.Matoking.protontricks.desktop 
+```
+
+- Vesktop
+```sh
+cp --no-preserve=mode /var/lib/flatpak/exports/share/applications/dev.vencord.Vesktop.desktop ~/.local/share/applications/dev.vencord.Vesktop.desktop 
+sed -i 's/^Icon=dev.vencord.Vesktop$/Icon=discord/g' ~/.local/share/applications/dev.vencord.Vesktop.desktop 
+```
+
+- Dev Toolbox
+```sh
+cp --no-preserve=mode /var/lib/flatpak/exports/share/applications/me.iepure.devtoolbox.desktop ~/.local/share/applications/me.iepure.devtoolbox.desktop 
+sed -i 's/^Icon=me.iepure.devtoolbox$/Icon=via/g' ~/.local/share/applications/me.iepure.devtoolbox.desktop 
+```
+
+- Libre Menu Editor
+```sh
+cp --no-preserve=mode /var/lib/flatpak/exports/share/applications/page.codeberg.libre_menu_editor.LibreMenuEditor.desktop ~/.local/share/applications/page.codeberg.libre_menu_editor.LibreMenuEditor.desktop 
+sed -i 's/^Icon=page.codeberg.libre_menu_editor.LibreMenuEditor$/Icon=org.gnome.Tecla.svg/g' ~/.local/share/applications/page.codeberg.libre_menu_editor.LibreMenuEditor.desktop 
+```
+
+## Advanced application suite
+Additional set of applications for work
+
+> A set of applications for organizing photos and working with 3D graphics.
+```sh
+sudo zypper in darktable blender 
+```
+
+> Software for downloading data, editing text, 2FA, plotting, updating software, working with music, creating plans and recording videos.
+```sh
+flatpak install flathub de.haeckerfelix.Fragments io.gitlab.liferooter.TextPieces com.belmoussaoui.Authenticator se.sjoerd.Graphs org.gnome.Firmware com.github.neithern.g4music app.drey.EarTag org.tenacityaudio.Tenacity org.gaphor.Gaphor io.github.alainm23.planify com.github.flxzt.rnote com.obsproject.Studio 
+```
+
+## GNOME extensions
+Extensions for GNOME that can improve the experience of using the system.
+
+```
+# changing keyboard layout without a popup window
+quick-lang-switch@ankostis.gmail.com
+
+# application icon running in the background
+appindicatorsupport@rgcjonas.gmail.com
+
+# Gnome Shell interface blur
+blur-my-shell@aunetx
+
+# clipboard manager for Gnome Shell
+clipboard-indicator@tudmotu.com
+
+# sleep mode on/off
+caffeine@patapon.info
+
+# system performance monitoring
+Vitals@CoreCoding.com
+
+# advanced Gnome Shell settings
+just-perfection-desktop@just-perfection
 ```

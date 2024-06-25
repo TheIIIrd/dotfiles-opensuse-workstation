@@ -506,7 +506,7 @@ sudo zypper in darktable blender
 
 > Software for downloading data, editing text, 2FA, plotting, updating software, working with music, creating plans and recording videos.
 ```sh
-flatpak install flathub de.haeckerfelix.Fragments io.gitlab.liferooter.TextPieces com.belmoussaoui.Authenticator se.sjoerd.Graphs org.gnome.Firmware com.github.neithern.g4music app.drey.EarTag org.tenacityaudio.Tenacity org.gaphor.Gaphor io.github.alainm23.planify com.github.flxzt.rnote com.obsproject.Studio 
+flatpak install flathub de.haeckerfelix.Fragments io.gitlab.liferooter.TextPieces com.belmoussaoui.Authenticator se.sjoerd.Graphs org.gnome.Firmware com.github.neithern.g4music app.drey.EarTag org.tenacityaudio.Tenacity org.gaphor.Gaphor io.github.alainm23.planify com.github.flxzt.rnote 
 ```
 
 ## GNOME extensions

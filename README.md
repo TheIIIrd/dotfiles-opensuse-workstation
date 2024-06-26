@@ -502,11 +502,12 @@ Additional set of applications for work
 > A set of applications for organizing photos and working with 3D graphics.
 ```sh
 sudo zypper in darktable blender 
+opi obs-studio 
 ```
 
 > Software for downloading data, editing text, 2FA, plotting, updating software, working with music, creating plans and recording videos.
 ```sh
-flatpak install flathub de.haeckerfelix.Fragments io.gitlab.liferooter.TextPieces com.belmoussaoui.Authenticator se.sjoerd.Graphs org.gnome.Firmware com.github.neithern.g4music app.drey.EarTag org.tenacityaudio.Tenacity org.gaphor.Gaphor io.github.alainm23.planify com.github.flxzt.rnote 
+flatpak install flathub com.belmoussaoui.Authenticator dev.geopjr.Collision com.github.huluti.Curtail app.drey.EarTag com.github.neithern.g4music se.sjoerd.Graphs com.belmoussaoui.Obfuscate io.gitlab.adhami3310.Impression fr.romainvigier.MetadataCleaner io.github.alainm23.planify com.github.ADBeveridge.Raider com.github.flxzt.rnote io.gitlab.adhami3310.Converter org.tenacityaudio.Tenacity 
 ```
 
 ## GNOME extensions

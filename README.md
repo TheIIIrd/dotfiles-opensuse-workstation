@@ -507,7 +507,7 @@ opi obs-studio
 
 > Software for downloading data, editing text, 2FA, plotting, updating software, working with music, creating plans and recording videos.
 ```sh
-flatpak install flathub com.belmoussaoui.Authenticator dev.geopjr.Collision com.github.huluti.Curtail app.drey.EarTag com.github.neithern.g4music se.sjoerd.Graphs com.belmoussaoui.Obfuscate io.gitlab.adhami3310.Impression fr.romainvigier.MetadataCleaner io.github.alainm23.planify com.github.ADBeveridge.Raider com.github.flxzt.rnote io.gitlab.adhami3310.Converter org.tenacityaudio.Tenacity 
+flatpak install flathub com.belmoussaoui.Authenticator dev.geopjr.Collision com.github.huluti.Curtail app.drey.EarTag com.github.neithern.g4music org.gaphor.Gaphor se.sjoerd.Graphs com.belmoussaoui.Obfuscate io.gitlab.adhami3310.Impression fr.romainvigier.MetadataCleaner io.github.alainm23.planify com.github.ADBeveridge.Raider com.github.flxzt.rnote io.gitlab.adhami3310.Converter org.tenacityaudio.Tenacity 
 ```
 
 ## GNOME extensions

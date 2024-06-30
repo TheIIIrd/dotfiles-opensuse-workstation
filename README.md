@@ -496,6 +496,13 @@ cp --no-preserve=mode /var/lib/flatpak/exports/share/applications/page.codeberg.
 sed -i 's/^Icon=page.codeberg.libre_menu_editor.LibreMenuEditor$/Icon=org.gnome.Tecla.svg/g' ~/.local/share/applications/page.codeberg.libre_menu_editor.LibreMenuEditor.desktop 
 ```
 
+- Hieroglyphic
+```sh
+cp --no-preserve=mode /var/lib/flatpak/exports/share/applications/io.github.finefindus.Hieroglyphic.desktop ~/.local/share/applications/io.github.finefindus.Hieroglyphic.desktop 
+sed -i 's/^Icon=io.github.finefindus.Hieroglyphic$/Icon=words/g' ~/.local/share/applications/io.github.finefindus.Hieroglyphic.desktop
+```
+
+
 ## Advanced application suite
 Additional set of applications for work
 

@@ -188,9 +188,9 @@ flatpak override --user --nosocket=wayland com.vscodium.codium
 ```
 
 > Add this to the settings if you want a custom title bar in vscodium.
-```json
+```
 {
-  ... 
+  ...
    "window.titleBarStyle": "custom"
   ...
 }

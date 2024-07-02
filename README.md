@@ -187,6 +187,15 @@ flatpak install flathub com.github.tchx84.Flatseal com.mattjakeman.ExtensionMana
 flatpak override --user --nosocket=wayland com.vscodium.codium 
 ```
 
+> Add this to the settings if you want a custom title bar in vscodium.
+```json
+{
+  ... 
+   "window.titleBarStyle": "custom"
+  ...
+}
+```
+
 
 ## Installing mod launcher for games
 [Native launcher](https://github.com/ebkr/r2modmanPlus) for modding games.
@@ -293,7 +302,7 @@ Categories=Game;
 ```
 
 
-## Fan control on MSI notebooks
+## Fan control on MSI laptop
 
 The application requires the `ec_sys` module with option `write_support=1` to run. If the `ec_sys` kernel module is not included in your distribution's kernel, you can use the `acpi_ec` kernel module.
 

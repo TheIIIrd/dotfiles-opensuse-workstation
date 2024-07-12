@@ -545,17 +545,6 @@ Quickly switch keyboard language layout without showing the switcher popup.
 quick-lang-switch@ankostis.gmail.com
 ```
 
-### Sane Airplane Mode
-Make airplane mode sane again! This extension gives you better control over the airplane mode and lets you turn off the annoying "Bluetooth gets turned on when I disable airplane mode" behaviour.
-
-<p align="center">
-  <img alt="Sane Airplane Mode" src="https://extensions.gnome.org/extension-data/screenshots/screenshot_4604_viEWOmy.png"/>
-</p>
-
-```
-sane-airplane-mode@kippi
-```
-
 ### AppIndicator and KStatusNotifierItem Support
 Adds AppIndicator, KStatusNotifierItem and legacy Tray icons support to the Shell.
 

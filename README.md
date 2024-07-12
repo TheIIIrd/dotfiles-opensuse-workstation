@@ -40,7 +40,7 @@ sudo zypper rm kmahjongg kmines kreversi ksudoku akregator kaddressbook konversa
 
 - If you have installed GNOME:
 ```sh
-sudo zypper rm gnome-contacts gnome-weather gnome-maps gnome-console gnome-chess gnome-mahjongg gnome-mines gnome-sudoku lightsoff quadrapassel swell-foop iagno evolution polari cheese opensuse-welcome 
+sudo zypper rm gnome-contacts gnome-weather gnome-maps gnome-terminal gnome-mahjongg gnome-mines gnome-sudoku gnome-chess iagno lightsoff quadrapassel swell-foop cheese evolution polari opensuse-welcome 
 ```
 
 
@@ -62,7 +62,7 @@ Basic packages that we will need as we work with the system.
 > Dynamic Kernel Module Support is needed to install the Nvidia driver.
 
 ```sh
-sudo zypper in git wget2 curl aria2 inxi fastfetch neovim zsh opi java-21-openjdk python311 python311-pip gcc-c++ clang clang-tools dkms 
+sudo zypper in git wget2 curl aria2 inxi fastfetch neovim zsh opi java-21-openjdk python312 python312-pip gcc-c++ clang clang-tools mono-complete dkms 
 ```
 
 If more than one version of Java is installed, this command will let you select the primary version.
@@ -100,12 +100,12 @@ A standard set of applications for a home computer.
 
 - If you have installed KDE Plasma:
 ```sh
-sudo zypper in torbrowser-launcher inkscape krita gamemode steam vlc partitionmanager 
+sudo zypper in torbrowser-launcher inkscape krita steam gamemode vlc partitionmanager 
 ```
 
 - If you have installed GNOME:
 ```sh
-sudo zypper in torbrowser-launcher inkscape krita gamemode steam vlc gparted gnome-font-viewer 
+sudo zypper in torbrowser-launcher inkscape krita steam gamemode vlc gparted gnome-font-viewer 
 ```
 
 
@@ -174,7 +174,7 @@ flatpak install org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark
 
 - If you have installed KDE Plasma
 ```sh
-flatpak install flathub com.github.tchx84.Flatseal page.codeberg.libre_menu_editor.LibreMenuEditor com.github.wwmm.easyeffects me.iepure.devtoolbox com.vysp3r.ProtonPlus com.github.Matoking.protontricks org.onlyoffice.desktopeditors org.kde.kdenlive com.vscodium.codium dev.vencord.Vesktop com.heroicgameslauncher.hgl 
+flatpak install flathub com.github.tchx84.Flatseal page.codeberg.libre_menu_editor.LibreMenuEditor com.github.wwmm.easyeffects com.vysp3r.ProtonPlus com.github.Matoking.protontricks org.onlyoffice.desktopeditors org.kde.kdenlive com.vscodium.codium dev.vencord.Vesktop com.heroicgameslauncher.hgl 
 ```
 
 - If you have installed GNOME
@@ -523,7 +523,7 @@ opi obs-studio
 
 > Software for downloading data, editing text, 2FA, working with music, creating plans and etc.
 ```sh
-flatpak install flathub org.gnome.gitlab.somas.Apostrophe com.belmoussaoui.Authenticator dev.geopjr.Collision com.github.huluti.Curtail app.drey.EarTag com.github.neithern.g4music org.gaphor.Gaphor se.sjoerd.Graphs io.github.finefindus.Hieroglyphic com.belmoussaoui.Obfuscate io.gitlab.adhami3310.Impression fr.romainvigier.MetadataCleaner io.github.alainm23.planify com.github.ADBeveridge.Raider com.github.flxzt.rnote io.gitlab.adhami3310.Converter org.tenacityaudio.Tenacity 
+flatpak install flathub org.gnome.gitlab.somas.Apostrophe com.belmoussaoui.Authenticator dev.geopjr.Collision com.github.huluti.Curtail me.iepure.devtoolbox app.drey.EarTag com.github.neithern.g4music org.gaphor.Gaphor se.sjoerd.Graphs io.github.finefindus.Hieroglyphic com.belmoussaoui.Obfuscate io.gitlab.adhami3310.Impression fr.romainvigier.MetadataCleaner io.github.alainm23.planify com.github.ADBeveridge.Raider com.github.flxzt.rnote io.gitlab.adhami3310.Converter org.tenacityaudio.Tenacity 
 ```
 
 ## GNOME extensions

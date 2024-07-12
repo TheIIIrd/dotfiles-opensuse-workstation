@@ -149,7 +149,7 @@ sudo zypper in opi
 opi codecs 
 ```
 
-> Or if you want to install the codec packages without vlc-codecs (if you don't plan on using the VideoLAN Client):
+> Or if you want to install the codec packages without `vlc-codecs` (if you don't plan on using the VideoLAN Client):
 ```sh
 sudo zypper in ffmpeg gstreamer-plugins-{good,bad,ugly,libav} gstreamer-plugin-openh264 mozilla-openh264 libavcodec 
 ```

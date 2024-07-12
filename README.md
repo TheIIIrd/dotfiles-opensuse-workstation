@@ -40,7 +40,7 @@ sudo zypper rm kmahjongg kmines kreversi ksudoku akregator kaddressbook konversa
 
 - If you have installed GNOME:
 ```sh
-sudo zypper rm gnome-contacts gnome-weather gnome-maps gnome-terminal gnome-mahjongg gnome-mines gnome-sudoku gnome-chess iagno lightsoff quadrapassel swell-foop cheese evolution polari opensuse-welcome 
+sudo zypper rm gnome-contacts gnome-weather gnome-maps gnome-console gnome-mahjongg gnome-mines gnome-sudoku gnome-chess iagno lightsoff quadrapassel swell-foop cheese evolution polari opensuse-welcome 
 ```
 
 
@@ -147,6 +147,11 @@ You need to play online or offline multimedia content but the content does not w
 ```sh
 sudo zypper in opi 
 opi codecs 
+```
+
+> Or if you want to install the codec packages without vlc-codecs (if you don't plan on using the VideoLAN Client):
+```sh
+sudo zypper in ffmpeg gstreamer-plugins-{good,bad,ugly,libav} gstreamer-plugin-openh264 mozilla-openh264 libavcodec 
 ```
 
 

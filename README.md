@@ -47,25 +47,25 @@ sudo zypper rm gnome-contacts gnome-weather gnome-maps gnome-console gnome-mahjo
 ## Installing useful software
 Basic packages that we will need as we work with the system.
 
-> Git wget2 curl curl aria2 is needed to work with the internet.
+> git, wget2, curl, aria2 is needed to work with the internet.
 > 
-> Inxi fastfetch displays useful information about the system.
+> inxi, fastfetch displays useful information about the system.
 > 
-> Neovim is a powerful text editor.
+> neovim is a powerful text editor.
 > 
-> Zsh is a modern command shell.
+> zsh is a modern command shell.
 > 
-> OBS Package Installer analog of yay/paru.
+> OBS package installer analog of yay/paru.
 > 
-> java-21-openjdk python311 python311-pip gcc-c++ clang clang-tools are needed to work with Java, Python and C++.
+> java-21-openjdk, python311, python311-pip, gcc-c++, clang, clang-tools, mono-complete are needed to work with Java, Python C++ and C#.
 > 
-> Dynamic Kernel Module Support is needed to install the Nvidia driver.
+> dynamic kernel module support is needed to install the Nvidia driver.
 
 ```sh
 sudo zypper in git wget2 curl aria2 inxi fastfetch neovim zsh opi java-21-openjdk python312 python312-pip gcc-c++ clang clang-tools mono-complete dkms 
 ```
 
-If more than one version of Java is installed, this command will let you select the primary version.
+If more than one version of Java is installed, this command will let you select the primary version:
 ```sh
 sudo update-alternatives --config java 
 ```
@@ -86,7 +86,12 @@ sudo systemctl enable dkms.service
 sudo zypper in nvidia-compute-G06 nvidia-compute-G06-32bit nvidia-compute-utils-G06 nvidia-drivers-G06 nvidia-driver-G06-kmp-default nvidia-gl-G06 nvidia-gl-G06-32bit nvidia-utils-G06 nvidia-video-G06 nvidia-video-G06-32bit libnvidia-egl-wayland1 libnvidia-egl-wayland1-32bit 
 ```
 
-> It is advisable to reboot again and check if the installation is correct using the following commands.
+> Or if you want to try open source Nvidia driver instead of proprietary, use this command:
+```sh
+sudo zypper install nvidia-open
+```
+
+> It is advisable to reboot again and check if the installation is correct using the following commands:
 ```sh
 systemctl status dkms.service 
 sudo zypper se nvidia 
@@ -126,7 +131,7 @@ sudo usermod -G libvirt -a <username>
 sudo vim /etc/libvirt/qemu.conf 
 ```
 
-> Running libvirtd background processes.
+> Running libvirtd background processes:
 ```sh
 sudo systemctl enable libvirtd 
 ```
@@ -163,7 +168,7 @@ sudo zypper in ffmpeg gstreamer-plugins-{good,bad,ugly,libav} gstreamer-plugin-o
 flatpak remotes --show-details 
 ```
 
-> If not, this command will add the flathub repository to the list.
+> If not, this command will add the flathub repository to the list:
 ```sh
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo 
 ```
@@ -172,17 +177,17 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
 ## Flatpak application installation
 Applications for fine-tuning your system, creating videos, programming, having fun.
 
-> Installing a theme for GTK3 applications.
+> Installing a theme for GTK3 applications;
 ```sh
 flatpak install org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark 
 ```
 
-- If you have installed KDE Plasma
+- If you have installed KDE Plasma:
 ```sh
 flatpak install flathub com.github.tchx84.Flatseal page.codeberg.libre_menu_editor.LibreMenuEditor com.github.wwmm.easyeffects com.vysp3r.ProtonPlus com.github.Matoking.protontricks org.onlyoffice.desktopeditors org.kde.kdenlive com.vscodium.codium dev.vencord.Vesktop com.heroicgameslauncher.hgl 
 ```
 
-- If you have installed GNOME
+- If you have installed GNOME:
 ```sh
 flatpak install flathub com.github.tchx84.Flatseal com.mattjakeman.ExtensionManager io.github.realmazharhussain.GdmSettings page.codeberg.libre_menu_editor.LibreMenuEditor com.github.wwmm.easyeffects io.missioncenter.MissionCenter com.raggesilver.BlackBox com.vysp3r.ProtonPlus com.github.Matoking.protontricks org.onlyoffice.desktopeditors org.kde.kdenlive com.vscodium.codium dev.vencord.Vesktop com.heroicgameslauncher.hgl 
 ```
@@ -192,7 +197,7 @@ flatpak install flathub com.github.tchx84.Flatseal com.mattjakeman.ExtensionMana
 flatpak override --user --nosocket=wayland com.vscodium.codium 
 ```
 
-> Add this to the settings if you want a custom title bar in vscodium.
+> Add this to the settings if you want a custom title bar in vscodium:
 ```
 {
   ...
@@ -210,18 +215,14 @@ flatpak override --user --nosocket=wayland com.vscodium.codium
 wget https://github.com/ebkr/r2modmanPlus/releases/download/v3.1.48/r2modman-3.1.48.AppImage 
 ```
 
-> Set permission to run the program.
+> Set permission to run the program:
 ```sh
 chmod +x r2modman-3.1.48.AppImage 
 ```
 
-> Create desktop shortcut
+> Create desktop shortcut: Don't forget to change `/path/to/r2modman.AppImage`!
 ```sh
-nvim .local/share/applications/r2modman.desktop 
-```
-
-> Add this to r2modman.desktop. Don't forget to change `/path/to/r2modman.AppImage`!
-```
+cat >> ~/.local/share/applications/r2modman.AppImage <<EOF
 [Desktop Entry]
 Name=R2modman
 Comment=Infinite mod generator
@@ -231,6 +232,7 @@ Terminal=false
 Type=Application
 Categories=Game;
 MimeType=x-scheme-handler/ror2mm;
+EOF
 ```
 
 
@@ -289,13 +291,9 @@ sudo rpm -ivh /path/to/<package_name>.rpm
 > Download the [latest release](https://llaun.ch/jar).
 > Alternative sources [one](https://llaun.ch) or [two](https://lln4.ru).
 
-> Create desktop shortcut.
+> Create desktop shortcut: Don't forget to change `/path/to/LegacyLauncher_legacy.jar`!
 ```sh
-nvim ~/.local/share/applications/minecraft.desktop 
-```
-
-> Add this to minecraft.desktop. Don't forget to change `/path/to/LegacyLauncher_legacy.jar`!
-```
+cat >> ~/.local/share/applications/minecraft.desktop <<EOF
 [Desktop Entry]
 Name=Minecraft
 Comment=Infinite idea generator
@@ -304,6 +302,7 @@ Icon=minecraft
 Terminal=false
 Type=Application
 Categories=Game;
+EOF
 ```
 
 
@@ -381,7 +380,7 @@ cd Tela-icon-theme
 ./install.sh standard 
 ```
 
-> Rounded icons
+> Rounded icons:
 ```sh
 git clone https://github.com/vinceliuice/Tela-circle-icon-theme.git 
 cd Tela-circle-icon-theme 
@@ -396,18 +395,18 @@ cd Tela-circle-icon-theme
 wget https://github.com/lassekongo83/adw-gtk3/releases/download/v5.3/adw-gtk3v5.3.tar.xz 
 ```
 
-> Unzip the archive
+> Unzip the archive:
 ```sh
 tar -xvf adw-gtk3v5.3.tar.xz 
 ```
 
-> Install theme
+> Install theme:
 ```sh
 sudo cp -r adw-gtk3 /usr/share/themes/ 
 sudo cp -r adw-gtk3-dark /usr/share/themes/ 
 ```
 
-> Add flatpak applications theme support
+> Add flatpak applications theme support:
 ```sh
 flatpak install org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark 
 ```

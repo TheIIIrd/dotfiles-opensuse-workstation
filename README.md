@@ -88,7 +88,7 @@ sudo zypper in nvidia-compute-G06 nvidia-compute-G06-32bit nvidia-compute-utils-
 
 > Or if you want to try open source Nvidia driver instead of proprietary, use this command:
 ```sh
-sudo zypper install nvidia-open
+sudo zypper in nvidia-open
 ```
 
 > It is advisable to reboot again and check if the installation is correct using the following commands:

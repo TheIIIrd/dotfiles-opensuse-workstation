@@ -177,7 +177,7 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
 ## Flatpak application installation
 Applications for fine-tuning your system, creating videos, programming, having fun.
 
-> Installing a theme for GTK3 applications;
+> Installing a theme for GTK3 applications:
 ```sh
 flatpak install org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark 
 ```

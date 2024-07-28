@@ -222,7 +222,7 @@ chmod +x r2modman-3.1.48.AppImage
 
 > Create desktop shortcut: Don't forget to change `/path/to/r2modman.AppImage`!
 ```sh
-cat >> ~/.local/share/applications/r2modman.AppImage <<EOF
+cat >> ~/.local/share/applications/r2modman.desktop <<EOF
 [Desktop Entry]
 Name=R2modman
 Comment=Infinite mod generator
@@ -451,7 +451,7 @@ git clone https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:-~/.
 > 
 > It should be changed to `plugins=(git zsh-autosuggestions zsh-syntax-highlighting)`.
 ```sh
-nvim .zshrc 
+sed -i 's/^plugins=(git)$/plugins=(git zsh-autosuggestions zsh-syntax-highlighting)/g' 
 ```
 
 > Restart the config

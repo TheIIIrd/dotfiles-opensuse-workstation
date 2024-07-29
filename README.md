@@ -451,7 +451,7 @@ git clone https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:-~/.
 > 
 > It should be changed to `plugins=(git zsh-autosuggestions zsh-syntax-highlighting)`.
 ```sh
-sed -i 's/^plugins=(git)$/plugins=(git zsh-autosuggestions zsh-syntax-highlighting)/g' 
+sed -i 's/^plugins=(git)$/plugins=(git zsh-autosuggestions zsh-syntax-highlighting)/g' ~/.zshrc 
 ```
 
 > Restart the config
@@ -471,7 +471,7 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 > 
 > You must replace the value of ZSH_THEME with `ZSH_THEME="powerlevel10k/powerlevel10k"`.
 ```sh
-nvim .zshrc 
+sed -i 's/^ZSH_THEME="robbyrussell"$/ZSH_THEME="powerlevel10k/powerlevel10k"/g' ~/.zshrc 
 ```
 
 > Restart the config

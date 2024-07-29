@@ -433,7 +433,7 @@ wget https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20R
 Oh-my-zsh will extend the capabilities of regular zsh.
 
 ```sh
-sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)" 
+sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
 

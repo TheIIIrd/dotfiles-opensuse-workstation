@@ -24,9 +24,7 @@ After installation, you should open YaST and configure the software repositories
 > `zypper ve` - check whether dependencies of installed packages are satisfied. + In case that any dependency problems are found, zypper suggests packages to install or remove to fix them.
 
 ```sh
-sudo zypper ref
-sudo zypper dup
-sudo zypper ve
+sudo zypper ref && sudo zypper dup && sudo zypper ve
 ```
 
 
@@ -76,8 +74,7 @@ Proper (most likely) installation of the Nvidia driver on OpenSUSE with dependen
 
 > Starting the DKMS daemon. It is obligatory to reboot!
 ```sh
-sudo zypper in dkms
-sudo systemctl enable dkms.service
+sudo zypper in dkms && sudo systemctl enable dkms.service
 ```
 
 > After installation, make sure the system is not under load.
@@ -114,8 +111,7 @@ You need to play online or offline multimedia content but the content does not w
 > Opi (Open Build Service Package Installer) works on both Leap and Tumbleweed, and is the easiest way to install community packages and the codecs:
 
 ```sh
-sudo zypper in opi
-opi codecs
+sudo zypper in opi && opi codecs
 ```
 
 > Or if you want to install the codec packages without `vlc-codecs` (if you don't plan on using the VideoLAN Client):
@@ -353,18 +349,12 @@ sudo vim /etc/zypp/zypp.conf
 
 - Verify rpm packages:
 ```sh
-sudo zypper ref
-sudo zypper lr
-sudo zypper lu
-sudo zypper dup
-sudo zypper ve
+sudo zypper ref && sudo zypper lr && sudo zypper lu && sudo zypper dup && sudo zypper ve
 ```
 
 - Verify flatpak packages:
 ```sh
-flatpak update
-flatpak uninstall --unused
-flatpak repair
+flatpak update && flatpak uninstall --unused && flatpak repair
 ```
 
 
@@ -375,16 +365,12 @@ flatpak repair
 
 > Traditional icons:
 ```sh
-git clone https://github.com/vinceliuice/Tela-icon-theme.git
-cd Tela-icon-theme
-./install.sh standard
+git clone https://github.com/vinceliuice/Tela-icon-theme.git && cd Tela-icon-theme && ./install.sh standard
 ```
 
 > Rounded icons:
 ```sh
-git clone https://github.com/vinceliuice/Tela-circle-icon-theme.git
-cd Tela-circle-icon-theme
-./install.sh standard
+git clone https://github.com/vinceliuice/Tela-circle-icon-theme.git && cd Tela-circle-icon-theme && ./install.sh standard
 ```
 
 
@@ -402,8 +388,7 @@ tar -xvf adw-gtk3v5.3.tar.xz
 
 > Install theme:
 ```sh
-sudo cp -r adw-gtk3 /usr/share/themes/
-sudo cp -r adw-gtk3-dark /usr/share/themes/
+sudo cp -r adw-gtk3 /usr/share/themes/ && sudo cp -r adw-gtk3-dark /usr/share/themes/
 ```
 
 > Add flatpak applications theme support:
@@ -418,8 +403,7 @@ Install zsh and run it.
 > Zsh will ask you to configure it after the first run.
 > Look at all the items and click 0 in each if you are satisfied.
 ```sh
-sudo zypper in zsh
-zsh
+sudo zypper in zsh && zsh
 ```
 
 > This font supports icons.
@@ -433,7 +417,7 @@ wget https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20R
 Oh-my-zsh will extend the capabilities of regular zsh.
 
 ```sh
-sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
 ```
 
 
@@ -441,8 +425,7 @@ sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools
 These extensions will provide hints while using zsh.
 
 ```sh
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-git clone https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting && git clone https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 ```
 
 > After installing the zsh extensions, you should put them in `.zshrc`.
@@ -471,7 +454,7 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 > 
 > You must replace the value of ZSH_THEME with `ZSH_THEME="powerlevel10k/powerlevel10k"`.
 ```sh
-sed -i 's/robbyrussell$/powerlevel10k/powerlevel10k/g' ~/.zshrc 
+sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="powerlevel10k\/powerlevel10k"/' ~/.zshrc
 ```
 
 > Restart the config
@@ -521,8 +504,7 @@ Additional set of applications for work
 
 > A set of applications for organizing photos, working with 3D graphics and recording videos.
 ```sh
-sudo zypper in darktable blender
-opi obs-studio
+sudo zypper in darktable blender && opi obs-studio
 ```
 
 > Software for downloading data, editing text, 2FA, working with music, creating plans and etc.

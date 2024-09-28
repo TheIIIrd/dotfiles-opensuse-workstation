@@ -18,9 +18,9 @@ After installation, you should open YaST and configure the software repositories
 - Add the Nvidia and Pacman community repositories.
 
 > `zypper ref` - refreshing a repository means downloading metadata of packages from the medium (if needed).
-> 
+
 > `zypper dup` - perform a distribution upgrade. This command applies the state of (specified) repositories onto the system; upgrades (or even downgrades) installed packages to versions found in repositories, removes packages that are no longer in the repositories and pose a dependency problem for the upgrade, handles package splits and renames, etc.
-> 
+
 > `zypper ve` - check whether dependencies of installed packages are satisfied. + In case that any dependency problems are found, zypper suggests packages to install or remove to fix them.
 
 ```sh
@@ -31,12 +31,12 @@ sudo zypper ref && sudo zypper dup && sudo zypper ve
 ## Uninstalling software
 By default, after installing the system, the workstation is overloaded with unnecessary programs. It is advisable to uninstall them so that they do not interfere with the use of the system.
 
-- If you have installed KDE Plasma:
+> If you have installed KDE Plasma:
 ```sh
 sudo zypper rm kmahjongg kmines kreversi ksudoku akregator kaddressbook konversation kmail kontact ktnef knotes kpat mbox-importer libkdegames kdegames-carddecks-default akonadi-contacts akonadi-import-wizard akonadi-calendar akonadi-calendar-tools opensuse-welcome
 ```
 
-- If you have installed GNOME:
+> If you have installed GNOME:
 ```sh
 sudo zypper rm gnome-contacts gnome-weather gnome-maps gnome-console gnome-mahjongg gnome-mines gnome-sudoku gnome-chess iagno lightsoff quadrapassel swell-foop cheese evolution polari opensuse-welcome
 ```
@@ -78,7 +78,7 @@ sudo zypper in dkms && sudo systemctl enable dkms.service
 ```
 
 > After installation, make sure the system is not under load.
-> plasma-systemmonitor gnome-system-monitor htop or btop.
+> Run plasma-systemmonitor, gnome-system-monitor, htop or btop.
 ```sh
 sudo zypper in nvidia-compute-G06 nvidia-compute-G06-32bit nvidia-compute-utils-G06 nvidia-drivers-G06 nvidia-driver-G06-kmp-default nvidia-gl-G06 nvidia-gl-G06-32bit nvidia-utils-G06 nvidia-video-G06 nvidia-video-G06-32bit libnvidia-egl-wayland1 libnvidia-egl-wayland1-32bit
 ```
@@ -109,7 +109,6 @@ You need to play online or offline multimedia content but the content does not w
 - vlc-codecs
 
 > Opi (Open Build Service Package Installer) works on both Leap and Tumbleweed, and is the easiest way to install community packages and the codecs:
-
 ```sh
 sudo zypper in opi && opi codecs
 ```
@@ -123,12 +122,12 @@ sudo zypper in libx264-164 libx265-209 ffmpeg-7 gstreamer-plugins-{base,good,bad
 ## Installing additional software
 A standard set of applications for a home computer.
 
-- If you have installed KDE Plasma:
+> If you have installed KDE Plasma:
 ```sh
 sudo zypper in partitionmanager torbrowser-launcher inkscape krita steam gamemode vlc
 ```
 
-- If you have installed GNOME:
+> If you have installed GNOME:
 ```sh
 sudo zypper in gparted gnome-font-viewer torbrowser-launcher inkscape krita steam gamemode vlc
 ```
@@ -141,7 +140,7 @@ Virtual machine manager to work with QEMU/KVM.
 sudo zypper in qemu-kvm bridge-utils virt-manager libguestfs guestfs-tools virt-install libvirt-devel libvirt
 ```
 
-> For virt-manager to work correctly, it is recommended to add a user to the libvirt group and to configure qemu.conf.
+For virt-manager to work correctly, it is recommended to add a user to the libvirt group and to configure qemu.conf.
 ```sh
 sudo usermod -G libvirt -a $USER
 ```
@@ -151,7 +150,7 @@ sudo usermod -G libvirt -a $USER
 sudo vim /etc/libvirt/qemu.conf
 ```
 
-> Running libvirtd background processes:
+Running libvirtd background processes:
 ```sh
 sudo systemctl enable libvirtd
 ```
@@ -160,12 +159,12 @@ sudo systemctl enable libvirtd
 ## Adding a flathub repository
 [Flathub](https://flathub.org) makes it easy to install and update applications for any Linux distribution. Browse popular categories such as performance, graphics, games, and more, or find your favorite application.
 
-> Check for a connected flathub repository. It should be enabled out of the box by default in OpenSUSE.
+Check for a connected flathub repository. It should be enabled out of the box by default in OpenSUSE.
 ```sh
 flatpak remotes --show-details
 ```
 
-> If not, this command will add the flathub repository to the list:
+If not, this command will add the flathub repository to the list:
 ```sh
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 ```
@@ -174,17 +173,17 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
 ## Flatpak application installation
 Applications for fine-tuning your system, creating videos, programming, having fun.
 
-> Installing a theme for GTK3 applications:
+Installing a theme for GTK3 applications:
 ```sh
 flatpak install org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark
 ```
 
-- If you have installed KDE Plasma:
+> If you have installed KDE Plasma:
 ```sh
 flatpak install flathub com.github.tchx84.Flatseal page.codeberg.libre_menu_editor.LibreMenuEditor com.github.wwmm.easyeffects com.vysp3r.ProtonPlus com.github.Matoking.protontricks org.onlyoffice.desktopeditors org.kde.kdenlive com.vscodium.codium dev.vencord.Vesktop com.heroicgameslauncher.hgl
 ```
 
-- If you have installed GNOME:
+> If you have installed GNOME:
 ```sh
 flatpak install flathub com.github.tchx84.Flatseal com.mattjakeman.ExtensionManager io.github.realmazharhussain.GdmSettings page.codeberg.libre_menu_editor.LibreMenuEditor com.github.wwmm.easyeffects io.missioncenter.MissionCenter com.raggesilver.BlackBox com.vysp3r.ProtonPlus com.github.Matoking.protontricks org.onlyoffice.desktopeditors org.kde.kdenlive com.vscodium.codium dev.vencord.Vesktop com.heroicgameslauncher.hgl
 ```
@@ -194,7 +193,7 @@ flatpak install flathub com.github.tchx84.Flatseal com.mattjakeman.ExtensionMana
 flatpak override --user --nosocket=wayland com.vscodium.codium
 ```
 
-> Add this to the settings if you want a custom title bar in vscodium:
+Add this to the settings if you want a custom title bar in vscodium:
 ```
 {
   ...
@@ -207,17 +206,17 @@ flatpak override --user --nosocket=wayland com.vscodium.codium
 ## Installing mod launcher for games
 [Native launcher](https://github.com/ebkr/r2modmanPlus) for modding games.
 
-> Download the [latest release](https://github.com/ebkr/r2modmanPlus/releases). R2modman.AppImage has the leading version in the name. It can be found in program releases.
+Download the [latest release](https://github.com/ebkr/r2modmanPlus/releases). R2modman.AppImage has the leading version in the name. It can be found in program releases.
 ```sh
 wget https://github.com/ebkr/r2modmanPlus/releases/download/v3.1.48/r2modman-3.1.48.AppImage
 ```
 
-> Set permission to run the program:
+Set permission to run the program:
 ```sh
 chmod +x r2modman-3.1.48.AppImage
 ```
 
-> Create desktop shortcut: Don't forget to change `/path/to/r2modman.AppImage`!
+Create desktop shortcut: Don't forget to change `/path/to/r2modman.AppImage`!
 ```sh
 cat >> ~/.local/share/applications/r2modman.desktop <<EOF
 [Desktop Entry]
@@ -236,47 +235,47 @@ EOF
 ## Installing the native engine for the game STALKER
 [Engine for the STALKER](https://github.com/OpenXRay/xray-16) series of games. Makes the game native.
 
-> Download the necessary dependencies.
+Download the necessary dependencies.
 ```sh
 sudo zypper in git cmake make gcc gcc-c++ glew-devel openal-devel cryptopp-devel libogg-devel libtheora-devel libvorbis-devel SDL2-devel lzo-devel libjpeg-turbo-devel
 ```
 
-> To get the source code, run:
+To get the source code, run:
 ```sh
 git clone https://github.com/OpenXRay/xray-16.git --recurse-submodules
 ```
 
-> Enter the repository clone and create a building directory there. The name of the directory doesn't matter, e.g. bin or build (bin will be used for the rest of this documentation to refer to this directory). An example for creating the directory and entering it for the terminal:
+Enter the repository clone and create a building directory there. The name of the directory doesn't matter, e.g. bin or build (bin will be used for the rest of this documentation to refer to this directory). An example for creating the directory and entering it for the terminal:
 ```sh
 cd xray-16 && mkdir bin && cd bin
 ```
 
-> Once you're inside of bin, configure the project by running:
+Once you're inside of bin, configure the project by running:
 ```sh
 cmake .. -DCMAKE_INSTALL_LIBDIR=lib64 -DCMAKE_INSTALL_PREFIX=/usr
 ```
 
-> To compile the engine, run:
+To compile the engine, run:
 ```sh
 make -jx
 ```
 
-> ! x denoted the number of threads you want to assign to the compile process. For example, if you want to use 4 threads:
+! x denoted the number of threads you want to assign to the compile process. For example, if you want to use 4 threads:
 ```sh
 make -j4
 ```
 
-> To make the engine, run:
+To make the engine, run:
 ```
 QA_RPATHS=$(( 0x0001|0x0010 )) make package
 ```
 
-- To install via zypper, run:
+To install via zypper, run:
 ```sh
 sudo zypper in /path/to/<package_name>.rpm
 ```
 
-- To install via rpm, run:
+To install via rpm, run:
 ```
 sudo rpm -ivh /path/to/<package_name>.rpm
 ```
@@ -287,8 +286,7 @@ sudo rpm -ivh /path/to/<package_name>.rpm
 
 > Download the [latest release](https://llaun.ch/jar).
 > Alternative sources [one](https://llaun.ch) or [two](https://lln4.ru).
-
-> Create desktop shortcut: Don't forget to change `/path/to/LegacyLauncher_legacy.jar`!
+Create desktop shortcut: Don't forget to change `/path/to/LegacyLauncher_legacy.jar`!
 ```sh
 cat >> ~/.local/share/applications/minecraft.desktop <<EOF
 [Desktop Entry]
@@ -304,15 +302,14 @@ EOF
 
 
 ## Fan control on MSI laptop
-
 The application requires the `ec_sys` module with option `write_support=1` to run. If the `ec_sys` kernel module is not included in your distribution's kernel, you can use the `acpi_ec` kernel module.
 
-> Checking for the ec_sys module:
+Checking for the ec_sys module:
 ```sh
 sudo modinfo ec_sys
 ```
 
-> Create ec_sys.conf:
+Create ec_sys.conf:
 ```sh
 sudo cat >> /etc/modules-load.d/ec_sys.conf <<EOF
 # Load ec_sys at boot
@@ -320,17 +317,17 @@ ec_sys write_support=1
 EOF
 ```
 
-> Download `MControlCenter-x.x.x.tar.gz` from the [releases](https://github.com/dmitry-s93/MControlCenter/releases) page.
+Download `MControlCenter-x.x.x.tar.gz` from the [releases](https://github.com/dmitry-s93/MControlCenter/releases) page.
 ```sh
 wget https://github.com/dmitry-s93/MControlCenter/releases/download/0.4.1/MControlCenter-0.4.1-bin.tar.gz
 ```
 
-> Unpack the archive with the program.
+Unpack the archive with the program.
 ```sh
 tar -xvf MControlCenter-0.4.1-bin.tar.gz
 ```
 
-> Open terminal in unpacked directory. Run the script.
+Open terminal in unpacked directory. Run the script.
 ```sh
 sudo ./install
 ```
@@ -363,12 +360,12 @@ flatpak update && flatpak uninstall --unused && flatpak repair
 ## Icon setup
 > To make icons available to all users of the system, instead of `./install.sh standard`, run `sudo ./install.sh standard`.
 
-> Traditional icons:
+Traditional icons:
 ```sh
 git clone https://github.com/vinceliuice/Tela-icon-theme.git && cd Tela-icon-theme && ./install.sh standard
 ```
 
-> Rounded icons:
+Rounded icons:
 ```sh
 git clone https://github.com/vinceliuice/Tela-circle-icon-theme.git && cd Tela-circle-icon-theme && ./install.sh standard
 ```
@@ -376,22 +373,22 @@ git clone https://github.com/vinceliuice/Tela-circle-icon-theme.git && cd Tela-c
 
 ## Installing the unofficial GTK3 port of libadwaita
 
-> Install theme from [this](https://github.com/lassekongo83/adw-gtk3) repo.
+Install theme from [this](https://github.com/lassekongo83/adw-gtk3) repo.
 ```sh
 wget https://github.com/lassekongo83/adw-gtk3/releases/download/v5.3/adw-gtk3v5.3.tar.xz
 ```
 
-> Unzip the archive:
+Unzip the archive:
 ```sh
 tar -xvf adw-gtk3v5.3.tar.xz
 ```
 
-> Install theme:
+Install theme:
 ```sh
 sudo cp -r adw-gtk3 /usr/share/themes/ && sudo cp -r adw-gtk3-dark /usr/share/themes/
 ```
 
-> Add flatpak applications theme support:
+Add flatpak applications theme support:
 ```sh
 flatpak install org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark
 ```
@@ -437,7 +434,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 sed -i 's/^plugins=(git)$/plugins=(git zsh-autosuggestions zsh-syntax-highlighting)/g' ~/.zshrc
 ```
 
-> Restart the config
+Restart the config
 ```sh
 source .zshrc
 ```
@@ -457,7 +454,7 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="powerlevel10k\/powerlevel10k"/' ~/.zshrc
 ```
 
-> Restart the config
+Restart the config
 ```sh
 source .zshrc
 ```

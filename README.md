@@ -344,12 +344,12 @@ sudo vim /etc/zypp/zypp.conf
 
 ## System integrity verification
 
-- Verify rpm packages:
+Verify rpm packages:
 ```sh
 sudo zypper ref && sudo zypper lr && sudo zypper lu && sudo zypper dup && sudo zypper ve
 ```
 
-- Verify flatpak packages:
+Verify flatpak packages:
 ```sh
 flatpak update && flatpak uninstall --unused && flatpak repair
 ```

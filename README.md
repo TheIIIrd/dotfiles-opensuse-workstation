@@ -1,4 +1,4 @@
-# OPENSUSE-CUSTOM-SETUP
+# openUSE-Workstation
 One more way to customize opensuse.
 
 <p align="center">

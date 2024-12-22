@@ -1,4 +1,4 @@
-# openUSE-Workstation
+# openSUSE-Workstation
 One more way to customize opensuse.
 
 <p align="center">

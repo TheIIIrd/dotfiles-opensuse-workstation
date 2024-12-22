@@ -1,5 +1,5 @@
-# openSUSE-Workstation
-One more way to customize opensuse.
+# **opensuse-workstation dotfiles**
+One more way to customize openSUSE
 
 <p align="center">
   <img alt="Screenshot 1" src="useful/screenshot/screenshot-1.png"/>
